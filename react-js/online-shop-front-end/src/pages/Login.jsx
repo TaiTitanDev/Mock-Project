@@ -10,11 +10,11 @@ const Login = () => {
       `https://6221aca0afd560ea69b68260.mockapi.io/api/v1/users?email=${email}`
     )
       .then((response) => response.json())
-      .then((users) => setUsers(users))
+      .then((users) => setUsers(users));
   }, [email, password]);
 
   function handleLogin() {
-    console.log({email, password});
+    console.log({ email, password });
     console.log(test);
   }
 
@@ -24,8 +24,8 @@ const Login = () => {
         <form>
           <h2 className="page-header">
             {users.map((user) => (
-                <p key={user.id} > Login with {user.username}</p>
-              ))}
+              <p key={user.id}> Login with {user.username}</p>
+            ))}
           </h2>
           <div className="form-group">
             <label>Email</label>

@@ -1,17 +1,31 @@
 [
     {
+        "id": "1",
+        "src": "/",
         "icon": "bx bx-user",
         "content": "Profile"
     },
     {
+        "id": "2",
+        "src": "/",
         "icon": "bx bx-wallet-alt",
         "content": "My Wallet"
     },
     {
+        "id": "3",
+        "src": "/",
         "icon": "bx bx-cog",
         "content": "Settings"
     },
     {
+        "id": "4",
+        "src": "login",
+        "icon": "bx bx-log-in-circle",
+        "content": "Login"
+    },
+    {
+        "id": "5",
+        "src": "/",
         "icon": "bx bx-log-out-circle bx-rotate-180",
         "content": "Logout"
     }

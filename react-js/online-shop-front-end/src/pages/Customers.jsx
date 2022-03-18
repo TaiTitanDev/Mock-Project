@@ -31,7 +31,6 @@ const renderBody = (item, index) => (
 const Customers = () => {
     return (
         <div>
-            {console.log("TEST")}
             <h2 className="page-header">
                 customers
             </h2>

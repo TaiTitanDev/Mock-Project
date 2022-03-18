@@ -1,7 +1,7 @@
 import axios from "axios";
 //mock API
-let API_URL = "https://5adc8779b80f490014fb883a.mockapi.io";
-export default function callApi(endpoint, method = "GET", body) {
+let API_URL = "https://6221aca0afd560ea69b68260.mockapi.io/api/v1";
+export default function callApi(method = "GET", endpoint, body) {
   return axios({
     method,
     url: `${API_URL}/${endpoint}`,
