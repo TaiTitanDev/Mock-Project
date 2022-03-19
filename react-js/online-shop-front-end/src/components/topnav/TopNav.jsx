@@ -29,7 +29,7 @@ const renderNotificationItem = (item, index) => (
 const renderUserToggle = (user) => (
   <div className="topnav__right-user">
     <div className="topnav__right-user__image">
-      <img src={user.avatar} alt="" />
+      <img src={user.avatar || avatarDefaultImage} alt="" height="100%" />
     </div>
     <div className="topnav__right-user__name">{user.name}</div>
   </div>
@@ -46,13 +46,15 @@ const renderUserMenu = (item, index) => (
 
 const Topnav = () => {
   // const curUser = JSON.parse(localStorage.getItem("curUser"));
-  const [currentUser, setCurrentUser] = useState(defaultUser);
+  const [currentUser] = useState(() => {
+    const data = JSON.parse(localStorage.getItem("KEY_USER"));
+    return data ?? defaultUser;
+  });
   const [currentUserMenus, setCurrentUserMenus] = useState(userMenus);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("KEY_USER"));
-    if (data != null) {
-      setCurrentUser(data);
+
+    if (currentUser !== defaultUser) {
       setCurrentUserMenus(userMenus.filter((item) => item.content !== "Login"));
     } else {
       setCurrentUserMenus(

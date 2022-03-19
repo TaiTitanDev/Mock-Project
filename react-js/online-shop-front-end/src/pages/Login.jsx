@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     fetch(
       `https://6221aca0afd560ea69b68260.mockapi.io/api/v1/users?email=${email}`
     )
       .then((response) => response.json())
-      .then((users) => setUsers(users));
-  }, [email, password]);
+      .then((users) => setUser(users[0]));
+  }, [email]);
 
   function handleLogin() {
-    console.log({ email, password });
-    console.log(test);
+    console.log(user);
+    if (user !== undefined && password === user.password) {
+      localStorage.setItem("KEY_USER", JSON.stringify(user));
+      setLoggedIn(true);
+    }
   }
 
   return (
     <div className="outer">
-      <div className="inner">
+      {loggedIn ? <Redirect to="/" /> : (<div className="inner">
         <form>
-          <h2 className="page-header">
-            {users.map((user) => (
-              <p key={user.id}> Login with {user.username}</p>
-            ))}
-          </h2>
+          <h2 className="page-header">Login</h2>
           <div className="form-group">
             <label>Email</label>
             <input
@@ -69,7 +69,7 @@ const Login = () => {
             <Link to="/register">Register</Link>
           </p>
         </form>
-      </div>
+      </div>)}
     </div>
   );
 };

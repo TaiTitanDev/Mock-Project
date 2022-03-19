@@ -25,7 +25,7 @@
     },
     {
         "id": "5",
-        "src": "/",
+        "src": "logout",
         "icon": "bx bx-log-out-circle bx-rotate-180",
         "content": "Logout"
     }
